@@ -1,6 +1,6 @@
-# Phonebook using Redux/ReduxToolkit of React
+# Phonebook using JSON Web Token
 
-> Task nr 7 from GoIT course - module: React.js Live demo
+> Task nr 8 from GoIT course - module: React.js Live demo
 > [_here_](https://emiliawenta.github.io/goit-react-hw-08-phonebook/).
 
 ## Table of Contents
