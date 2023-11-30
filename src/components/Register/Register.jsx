@@ -32,7 +32,7 @@ export default function Register() {
           <input
             type="text"
             name="name"
-            placeholder="Enter contact name..."
+            placeholder="Enter Your name..."
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />

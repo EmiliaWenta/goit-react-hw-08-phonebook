@@ -5,13 +5,22 @@ import { Outlet } from 'react-router-dom';
 
 import { StyledHeader, StyledLink } from './Layout.styled';
 import { useAuth } from 'hook/useAuth';
+import { logout } from '../../redux/reducers/auth/operations';
+import { useDispatch } from 'react-redux';
 
-const AuthenticatedNav = () => (
-  <>
-    <StyledLink to="contacts">Contacts</StyledLink>
-    <button>LogOut</button>
-  </>
-);
+const AuthenticatedNav = () => {
+  const dispatch = useDispatch();
+  const hanldeClick = () => {
+    dispatch(logout());
+  };
+
+  return (
+    <>
+      <StyledLink to="contacts">Contacts</StyledLink>
+      <button onClick={hanldeClick}>Logout</button>
+    </>
+  );
+};
 const UnAuthenticatedNav = () => (
   <>
     <StyledLink to="register">Register</StyledLink>
@@ -21,7 +30,7 @@ const UnAuthenticatedNav = () => (
 
 export const Layout = () => {
   const { isLoggedIn } = useAuth();
-  console.log(isLoggedIn);
+
   return (
     <>
       <StyledHeader>
