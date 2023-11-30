@@ -18,6 +18,8 @@ import Contacts from './Contacts/Contacts';
 import Home from '../Pages/Home';
 
 import { StyledContainer } from './App.styled';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
 // const Home = lazy(() => import('../pages/Home'));
 
@@ -40,9 +42,23 @@ export function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="contacts" element={<Contacts />} />
+
+          <Route
+            path="login"
+            element={
+              <ProtectedRoute element={<Login />} redirect="/contacts" />
+            }
+          />
+          <Route
+            path="register"
+            element={
+              <ProtectedRoute element={<Register />} redirect="/contacts" />
+            }
+          />
+          <Route
+            path="contacts"
+            element={<PrivateRoute element={<Contacts />} redirect="/login" />}
+          />
           <Route />
         </Route>
 

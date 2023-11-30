@@ -12,11 +12,7 @@ export default function Register() {
     const name = form.elements.name.value;
     const email = form.elements.email.value;
     const password = form.elements.password.value;
-    console.log(form);
 
-    console.log(name);
-    console.log(password);
-    console.log(email);
     dispatch(
       register({
         name,
