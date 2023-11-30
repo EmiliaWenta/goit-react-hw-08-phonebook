@@ -21,5 +21,10 @@ export default function ContactList() {
       />
     ));
 
-  return <ul className={css.contactList}>{contactListItem}</ul>;
+  return (
+    <>
+      <h1 className={css.title}>Contacts</h1>
+      <ul className={css.contactList}>{contactListItem}</ul>
+    </>
+  );
 }
