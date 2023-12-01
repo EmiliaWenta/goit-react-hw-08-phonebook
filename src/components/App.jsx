@@ -1,36 +1,27 @@
 import React from 'react';
-// import { useEffect, lazy } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { useSelector } from 'react-redux/es/hooks/useSelector';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Routes, Route } from 'react-router-dom';
-
-// import Form from './Form/Form';
-// import Filter from './Filter/Filter';
-// import Loader from './Loader/Loader';
-// // import ContactList from './ContactList/ContactList';
-// import { selectContacts } from '../redux/selectors';
-// import { fetchContacts } from '../redux/operations';
 import { Layout } from './Layout/Layout';
 import Register from './Register/Register';
 import Login from './Login/Login';
 import Contacts from './Contacts/Contacts';
 import Home from '../Pages/Home';
-
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { StyledContainer } from './App.styled';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
+import { currentUser } from '../redux/reducers/auth/operations';
 
 // const Home = lazy(() => import('../pages/Home'));
 
 export function App() {
   // const { isLoading, error } = useSelector(selectContacts);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(currentUser());
+  }, [dispatch]);
 
   // if (error) {
   //   Notify.failure(`${error}`);
