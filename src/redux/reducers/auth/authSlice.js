@@ -51,10 +51,14 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
+      .addCase(currentUser.pending, (state, action) => {
+        state.isLoading = true;
+      })
       .addCase(currentUser.fulfilled, (state, action) => {
         state.isLoggedIn = true;
         state.user = action.payload.user;
-      });
+      })
+      .addCase(currentUser.rejected, () => initialState);
   },
 });
 
