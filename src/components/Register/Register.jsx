@@ -3,17 +3,13 @@ import { register } from '../../redux/reducers/auth/operations';
 import {
   Flex,
   Box,
-  Spacer,
   Stack,
   Button,
   Card,
   CardBody,
   FormControl,
   FormLabel,
-  Heading,
-  HStack,
   Input,
-  Vstack,
   InputGroup,
   InputLeftElement,
   useColorMode,
@@ -22,9 +18,6 @@ import {
 import { ArrowForwardIcon, AtSignIcon, LockIcon } from '@chakra-ui/icons';
 
 export default function Register() {
-  // const [username, setUsername] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const { colorMode } = useColorMode();
   const dispatch = useDispatch();
   const handleSubmit = e => {
@@ -46,13 +39,6 @@ export default function Register() {
   };
 
   return (
-    // <Box>
-    //   <Flex justify="center" align="center" height="80vh">
-    //     <Center>
-    //       <Stack></Stack>
-    //     </Center>
-    //   </Flex>
-    // </Box>
     <Box>
       <Flex paddingTop="25px" justify="center" align="flex-start">
         <Card
