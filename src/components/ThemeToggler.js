@@ -6,7 +6,7 @@ export default function ThemeToggler() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Box textAlign="center">
+    <Box textAlign="center" position="absolute" right="30px" top="10px">
       <IconButton
         icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
         onClick={toggleColorMode}
