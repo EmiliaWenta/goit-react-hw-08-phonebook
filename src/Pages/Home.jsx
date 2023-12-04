@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet';
+
 // import React, { useEffect, useState } from 'react';
 // import { getTrendingMovies } from '../Api/getTrendingMovies';
 // import { Link } from 'react-router-dom';

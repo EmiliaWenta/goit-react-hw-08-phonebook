@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/reducers/auth/operations';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 
 export default function Login() {
   const dispatch = useDispatch();

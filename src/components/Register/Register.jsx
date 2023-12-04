@@ -1,10 +1,31 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/reducers/auth/operations';
+import {
+  Flex,
+  Box,
+  Spacer,
+  Stack,
+  Button,
+  Card,
+  CardBody,
+  FormControl,
+  FormLabel,
+  Heading,
+  HStack,
+  Input,
+  Vstack,
+  InputGroup,
+  InputLeftElement,
+  useColorMode,
+} from '@chakra-ui/react';
+
+import { ArrowForwardIcon, AtSignIcon, LockIcon } from '@chakra-ui/icons';
 
 export default function Register() {
   // const [username, setUsername] = useState("");
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
+  const { colorMode } = useColorMode();
   const dispatch = useDispatch();
   const handleSubmit = e => {
     e.preventDefault();
@@ -25,42 +46,116 @@ export default function Register() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter Your name..."
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-        </label>
+    // <Box>
+    //   <Flex justify="center" align="center" height="80vh">
+    //     <Center>
+    //       <Stack></Stack>
+    //     </Center>
+    //   </Flex>
+    // </Box>
+    <Box>
+      <Flex paddingTop="25px" justify="center" align="flex-start">
+        <Card
+          bg="#f6f8fa"
+          variant="outline"
+          borderColor="#d8dee4"
+          w="400px"
+          size="lg"
+          borderRadius={8}
+          boxShadow="lg"
+        >
+          <CardBody>
+            <form onSubmit={handleSubmit}>
+              <Stack spacing="4">
+                <FormControl isRequired>
+                  <FormLabel
+                    size="md"
+                    color={colorMode === 'dark' ? 'black' : 'black'}
+                  >
+                    Name
+                  </FormLabel>
+                  <InputGroup>
+                    <InputLeftElement pointerEvents="none">
+                      <ArrowForwardIcon color="gray.300" />
+                    </InputLeftElement>
+                    <Input
+                      name="name"
+                      placeholder="Enter Your Name"
+                      type="text"
+                      bg="white"
+                      borderColor="#d8dee4"
+                      size="md"
+                      borderRadius="6px"
+                      color={colorMode === 'dark' ? 'black' : 'black'}
+                    />
+                  </InputGroup>
+                </FormControl>
 
-        <label>
-          Email
-          <input
-            type="text"
-            name="email"
-            placeholder="Enter Your email"
-            title="email must contain @"
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            name="password"
-            type="password"
-            placeholder="Enter Your passsword"
-            minLength="8"
-            required
-          />
-        </label>
+                <FormControl isRequired>
+                  <FormLabel
+                    size="md"
+                    color={colorMode === 'dark' ? 'black' : 'black'}
+                  >
+                    Email
+                  </FormLabel>
+                  <InputGroup>
+                    <InputLeftElement pointerEvents="none">
+                      <AtSignIcon color="gray.300" />
+                    </InputLeftElement>
+                    <Input
+                      color={colorMode === 'dark' ? 'black' : 'black'}
+                      name="email"
+                      placeholder="Enter Your Email"
+                      type="email"
+                      bg="white"
+                      borderColor="#d8dee4"
+                      size="md"
+                      borderRadius="6px"
+                    />
+                  </InputGroup>
+                </FormControl>
 
-        <button type="submit">Register</button>
-      </form>
-    </div>
+                <FormControl isRequired>
+                  <FormLabel
+                    size="md"
+                    color={colorMode === 'dark' ? 'black' : 'black'}
+                  >
+                    Password
+                  </FormLabel>
+
+                  <InputGroup>
+                    <InputLeftElement pointerEvents="none">
+                      <LockIcon color="gray.300" />
+                    </InputLeftElement>
+                    <Input
+                      type="password"
+                      bg="white"
+                      borderColor="#d8dee4"
+                      size="md"
+                      borderRadius="6px"
+                      name="password"
+                      minLength="8"
+                      placeholder="Enter Your password"
+                      color={colorMode === 'dark' ? 'black' : 'black'}
+                    />
+                  </InputGroup>
+                </FormControl>
+
+                <Button
+                  type="submit"
+                  bg="#2da44e"
+                  color="white"
+                  size="sm"
+                  _hover={{ bg: '#2c974b' }}
+                  _active={{ bg: '#298e46' }}
+                >
+                  Reggister
+                </Button>
+              </Stack>
+            </form>
+          </CardBody>
+        </Card>
+      </Flex>
+    </Box>
   );
 }
