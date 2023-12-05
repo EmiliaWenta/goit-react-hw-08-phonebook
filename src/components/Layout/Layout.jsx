@@ -10,21 +10,57 @@ import { useDispatch } from 'react-redux';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import ThemeToggler from '../ThemeToggler';
 
-import { Flex, HStack, Spacer, Button } from '@chakra-ui/react';
+import {
+  Flex,
+  HStack,
+  Spacer,
+  Button,
+  Tag,
+  TagLabel,
+  Avatar,
+  AiOutlineUser,
+} from '@chakra-ui/react';
 import { Box, Stack, Grid, Wrap, AspectRatio } from '@chakra-ui/layout';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { selectUser } from '../../redux/selectors';
 
 const AuthenticatedNav = () => {
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
+
   const hanldeClick = () => {
     dispatch(logout());
   };
 
   return (
-    <Tab>
-      <Link to="contacts">Contacts</Link>
+    <>
+      <Tab>
+        <Link to="contacts">Contacts</Link>
+      </Tab>
 
-      {/* <button onClick={hanldeClick}>Logout</button> */}
-    </Tab>
+      <Tag size="md" colorScheme="blue" borderRadius="full">
+        <Avatar
+          bg="blue.500"
+          src="https://bit.ly/broken-link"
+          size="md"
+          ml={-2}
+          mr={2}
+        />
+        <TagLabel>{user}</TagLabel>
+      </Tag>
+
+      <Button
+        type="submit"
+        bg="blue"
+        color="white"
+        size="md"
+        _hover={{ bg: 'darkblue' }}
+        _active={{ bg: 'darkblue' }}
+        onClick={hanldeClick}
+      >
+        Logout
+      </Button>
+    </>
   );
 };
 const UnAuthenticatedNav = () => (
@@ -44,7 +80,7 @@ export const Layout = () => {
   return (
     <>
       <Tabs isLazy>
-        <TabList>
+        <TabList gap="15">
           <Tab>
             <Link to="/">Home</Link>
           </Tab>
