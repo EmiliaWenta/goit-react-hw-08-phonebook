@@ -54,9 +54,6 @@ export function App() {
           <Route />
         </Route>
 
-        {/* <Form />
-        <Filter />
-        <ContactList /> */}
         {/* {isLoading && <Loader />} */}
       </Routes>
     </StyledContainer>

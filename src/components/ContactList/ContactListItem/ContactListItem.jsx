@@ -6,7 +6,7 @@ import { deleteContact } from '../../../redux/reducers/contacts/operations';
 
 import css from './ContactListItem.module.css';
 
-export default function ContactListItem({ id, name, phone }) {
+export default function ContactListItem({ id, name, number }) {
   const dispatch = useDispatch();
 
   const handleRemove = id => {
@@ -15,7 +15,7 @@ export default function ContactListItem({ id, name, phone }) {
 
   return (
     <li className={css.contactListItem__item} key={id.toString()}>
-      {name}: {phone}
+      {name}: {number}
       <button
         className={css.contactListItem__button}
         type="button"
@@ -32,5 +32,5 @@ export default function ContactListItem({ id, name, phone }) {
 ContactListItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
 };

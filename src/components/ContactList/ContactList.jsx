@@ -18,7 +18,7 @@ export default function ContactList() {
       <ContactListItem
         id={item.id}
         name={item.name}
-        phone={item.phone}
+        number={item.number}
         key={item.id}
       />
     ));

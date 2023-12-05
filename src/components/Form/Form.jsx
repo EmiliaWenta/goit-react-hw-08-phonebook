@@ -27,8 +27,8 @@ export default function Form() {
     event.preventDefault();
     const form = event.currentTarget;
     const name = form.elements.name.value;
-    const phone = form.elements.phone.value;
-    dispatch(addContact({ name, phone }));
+    const number = form.elements.number.value;
+    dispatch(addContact({ name, number }));
     form.reset();
   };
 
@@ -82,7 +82,7 @@ export default function Form() {
                       <PhoneIcon color="gray.300" />
                     </InputLeftElement>
                     <Input
-                      name="phone"
+                      name="number"
                       placeholder="Enter phone number"
                       type="tel"
                       bg="white"
