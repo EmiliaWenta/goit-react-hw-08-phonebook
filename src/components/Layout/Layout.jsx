@@ -51,7 +51,7 @@ const AuthenticatedNav = () => {
 
       <Button
         type="submit"
-        bg="blue"
+        bg="#2196f3"
         color="white"
         size="md"
         _hover={{ bg: 'darkblue' }}

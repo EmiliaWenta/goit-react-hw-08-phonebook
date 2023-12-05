@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 import ContactListItem from './ContactListItem/ContactListItem';
 import { selectFilterValue, selectContacts } from '../../redux/selectors';
 
+import { Heading } from '@chakra-ui/react';
+
 import css from './ContactList.module.css';
 
 export default function ContactList() {
@@ -23,7 +25,9 @@ export default function ContactList() {
 
   return (
     <>
-      <h1 className={css.title}>Contacts</h1>
+      <Heading as="h2" size="md" color="#2196f3">
+        Contacts
+      </Heading>
       <ul className={css.contactList}>{contactListItem}</ul>
     </>
   );
