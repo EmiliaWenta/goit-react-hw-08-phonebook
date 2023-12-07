@@ -3,26 +3,19 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
-// import { StyledHeader, StyledLink } from './Layout.styled';
+
 import { useAuth } from 'hook/useAuth';
 import { logout } from '../../redux/reducers/auth/operations';
 import { useDispatch } from 'react-redux';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
-import ThemeToggler from '../ThemeToggler';
 
-import {
-  Flex,
-  HStack,
-  Spacer,
-  Button,
-  Tag,
-  TagLabel,
-  Avatar,
-  AiOutlineUser,
-} from '@chakra-ui/react';
-import { Box, Stack, Grid, Wrap, AspectRatio } from '@chakra-ui/layout';
+import ThemeToggler from '../ThemeToggler';
+import { selectLoaderAuth } from 'redux/selectors';
+
+import { Button, Tag, TagLabel, Avatar } from '@chakra-ui/react';
+
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { selectUser } from '../../redux/selectors';
+import { StyledLayout, StyledLink } from './Layout.styled';
 
 const AuthenticatedNav = () => {
   const user = useSelector(selectUser);
@@ -34,9 +27,9 @@ const AuthenticatedNav = () => {
 
   return (
     <>
-      <Tab>
-        <Link to="contacts">Contacts</Link>
-      </Tab>
+      <StyledLink to="/">Home</StyledLink>
+
+      <StyledLink to="contacts">Contacts</StyledLink>
 
       <Tag size="md" colorScheme="blue" borderRadius="full">
         <Avatar
@@ -65,36 +58,31 @@ const AuthenticatedNav = () => {
 };
 const UnAuthenticatedNav = () => (
   <>
-    <Tab>
-      <Link to="register">Register</Link>
-    </Tab>
-    <Tab>
-      <Link to="login">Login</Link>
-    </Tab>
+    <StyledLink to="/">Home</StyledLink>
+
+    <StyledLink to="register">Register</StyledLink>
+
+    <StyledLink to="login">Login</StyledLink>
   </>
 );
 
 export const Layout = () => {
   const { isLoggedIn } = useAuth();
-
+  const isLoadingAuth = useSelector(selectLoaderAuth);
   return (
     <>
-      <Tabs isLazy>
-        <TabList gap="15">
-          <Tab>
-            <Link to="/">Home</Link>
-          </Tab>
-
+      {isLoadingAuth && <Loader />}
+      <StyledLayout>
+        <nav>
+          
           {isLoggedIn ? <AuthenticatedNav /> : <UnAuthenticatedNav />}
-        </TabList>
+          <ThemeToggler />
+        </nav>
+      </StyledLayout>
 
-        <TabPanels>
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
-        </TabPanels>
-      </Tabs>
-      <ThemeToggler />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
