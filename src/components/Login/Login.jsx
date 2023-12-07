@@ -14,11 +14,15 @@ import {
   InputLeftElement,
   useColorMode,
 } from '@chakra-ui/react';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { selectAuth } from '../../redux/selectors';
 
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { AtSignIcon, LockIcon } from '@chakra-ui/icons';
 
 export default function Login() {
   const { colorMode } = useColorMode();
+  const { error } = useSelector(selectAuth);
   const dispatch = useDispatch();
   const handleSubmit = e => {
     e.preventDefault();
@@ -33,6 +37,9 @@ export default function Login() {
       })
     );
   };
+  if (error !== null) {
+    Notify.failure(`The login attempt failed. ${error}`);
+  }
   return (
     <Box>
       <Flex paddingTop="25px" justify="center" align="flex-start">

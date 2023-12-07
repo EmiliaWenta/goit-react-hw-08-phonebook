@@ -5,7 +5,9 @@ import { addContact } from '../../redux/reducers/contacts/operations';
 
 import { Heading } from '@chakra-ui/react';
 import { Card, CardBody } from '@chakra-ui/react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { ArrowForwardIcon, PhoneIcon } from '@chakra-ui/icons';
 import {
   Flex,
@@ -19,9 +21,12 @@ import {
   InputLeftElement,
   useColorMode,
 } from '@chakra-ui/react';
+import { selectAuth } from '../../redux/selectors';
 
 export default function Form() {
   const dispatch = useDispatch();
+  // const { error } = useSelector(selectAuth);
+  // console.log(error);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -31,6 +36,10 @@ export default function Form() {
     dispatch(addContact({ name, number }));
     form.reset();
   };
+
+  // if (error) {
+  //   return Notify.failure(error);
+  // }
 
   return (
     <Box>

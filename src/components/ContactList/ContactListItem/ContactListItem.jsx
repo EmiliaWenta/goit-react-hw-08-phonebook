@@ -5,19 +5,12 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../../redux/reducers/contacts/operations';
 
 import {
-  Box,
   Flex,
-  Heading,
-  Input,
-  List,
   ListItem,
   ListIcon,
-  OrderedList,
-  UnorderedList,
   Button,
   Card,
   CardBody,
-  Text,
 } from '@chakra-ui/react';
 import { PhoneIcon, DeleteIcon } from '@chakra-ui/icons';
 

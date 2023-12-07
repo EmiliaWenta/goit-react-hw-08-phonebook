@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/reducers/auth/operations';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { selectAuth } from '../../redux/selectors';
 import {
   Flex,
   Box,
@@ -14,18 +16,28 @@ import {
   InputLeftElement,
   useColorMode,
 } from '@chakra-ui/react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { ArrowForwardIcon, AtSignIcon, LockIcon } from '@chakra-ui/icons';
 
 export default function Register() {
   const { colorMode } = useColorMode();
   const dispatch = useDispatch();
+
+  const { error } = useSelector(selectAuth);
+
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     const name = form.elements.name.value;
     const email = form.elements.email.value;
     const password = form.elements.password.value;
+
+    if (error !== null) {
+      return Notify.failure(
+        `We're sorry, yor personal data are invalid. Please check and try again. ${error}`
+      );
+    }
 
     dispatch(
       register({

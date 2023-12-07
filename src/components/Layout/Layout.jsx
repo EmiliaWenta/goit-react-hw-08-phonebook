@@ -2,7 +2,6 @@ import React from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Loader from '../Loader/Loader';
-import { Link } from 'react-router-dom';
 
 import { useAuth } from 'hook/useAuth';
 import { logout } from '../../redux/reducers/auth/operations';
@@ -16,6 +15,7 @@ import { Button, Tag, TagLabel, Avatar } from '@chakra-ui/react';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { selectUser } from '../../redux/selectors';
 import { StyledLayout, StyledLink } from './Layout.styled';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 
 const AuthenticatedNav = () => {
   const user = useSelector(selectUser);
@@ -43,6 +43,7 @@ const AuthenticatedNav = () => {
       </Tag>
 
       <Button
+        leftIcon={<ArrowForwardIcon />}
         type="submit"
         bg="#2196f3"
         color="white"
@@ -74,7 +75,6 @@ export const Layout = () => {
       {isLoadingAuth && <Loader />}
       <StyledLayout>
         <nav>
-          
           {isLoggedIn ? <AuthenticatedNav /> : <UnAuthenticatedNav />}
           <ThemeToggler />
         </nav>
