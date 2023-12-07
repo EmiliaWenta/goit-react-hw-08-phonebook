@@ -4,7 +4,22 @@ import { useDispatch } from 'react-redux';
 
 import { deleteContact } from '../../../redux/reducers/contacts/operations';
 
-import css from './ContactListItem.module.css';
+import {
+  Box,
+  Flex,
+  Heading,
+  Input,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  Button,
+  Card,
+  CardBody,
+  Text,
+} from '@chakra-ui/react';
+import { PhoneIcon, DeleteIcon } from '@chakra-ui/icons';
 
 export default function ContactListItem({ id, name, number }) {
   const dispatch = useDispatch();
@@ -14,18 +29,32 @@ export default function ContactListItem({ id, name, number }) {
   };
 
   return (
-    <li className={css.contactListItem__item} key={id.toString()}>
-      {name}: {number}
-      <button
-        className={css.contactListItem__button}
-        type="button"
-        onClick={() => {
-          handleRemove(id);
-        }}
-      >
-        Delete
-      </button>
-    </li>
+    <ListItem key={id.toString()} width="450px" align="flex-start">
+      <Card>
+        <CardBody>
+          <Flex gap="10px" justifyContent="space-between" alignItems="center">
+            <ListIcon as={PhoneIcon} color="blue.500" />
+            {name}: {number}
+            <Button
+              leftIcon={<DeleteIcon />}
+              colorScheme="teal"
+              variant="solid"
+              type="button"
+              bg="#2196f3"
+              color="white"
+              size="sm"
+              _hover={{ bg: 'darkblue' }}
+              _active={{ bg: 'darkblue' }}
+              onClick={() => {
+                handleRemove(id);
+              }}
+            >
+              Delete
+            </Button>
+          </Flex>
+        </CardBody>
+      </Card>
+    </ListItem>
   );
 }
 

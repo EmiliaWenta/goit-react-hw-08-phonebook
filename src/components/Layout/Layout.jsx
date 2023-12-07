@@ -1,7 +1,7 @@
 import React from 'react';
-// import { Suspense } from 'react';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-// import Loader from '../Loader/Loader';
+import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 // import { StyledHeader, StyledLink } from './Layout.styled';
 import { useAuth } from 'hook/useAuth';
@@ -89,13 +89,12 @@ export const Layout = () => {
         </TabList>
 
         <TabPanels>
-          <Outlet />
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
         </TabPanels>
       </Tabs>
       <ThemeToggler />
-      {/* <Suspense fallback={<Loader />}>
-        // 
-      </Suspense> */}
     </>
   );
 };

@@ -27,6 +27,8 @@ export default function Filter() {
           borderColor="#d8dee4"
           size="md"
           borderRadius="6px"
+          maxWidth="400px"
+          minWidth="350px"
           width="50%"
           onChange={handleFilter}
         />
