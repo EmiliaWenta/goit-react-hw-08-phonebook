@@ -32,25 +32,34 @@ export function App() {
     <>
       <StyledContainer>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/goit-react-hw-08-phonebook" element={<Layout />}>
             <Route index element={<Home />} />
 
             <Route
               path="login"
               element={
-                <ProtectedRoute element={<Login />} redirect="/contacts" />
+                <ProtectedRoute
+                  element={<Login />}
+                  redirect="/goit-react-hw-08-phonebook/contacts"
+                />
               }
             />
             <Route
               path="register"
               element={
-                <ProtectedRoute element={<Register />} redirect="/contacts" />
+                <ProtectedRoute
+                  element={<Register />}
+                  redirect="/goit-react-hw-08-phonebook/contacts"
+                />
               }
             />
             <Route
               path="contacts"
               element={
-                <PrivateRoute element={<Contacts />} redirect="/login" />
+                <PrivateRoute
+                  element={<Contacts />}
+                  redirect="/goit-react-hw-08-phonebook/login"
+                />
               }
             />
             <Route />

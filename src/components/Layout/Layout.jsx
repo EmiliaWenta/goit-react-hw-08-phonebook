@@ -23,8 +23,6 @@ const AuthenticatedNav = () => {
 
   return (
     <>
-      <StyledLink to="/">Home</StyledLink>
-
       <StyledLink to="contacts">Contacts</StyledLink>
 
       <Tag size="md" colorScheme="blue" borderRadius="full">
@@ -55,8 +53,6 @@ const AuthenticatedNav = () => {
 };
 const UnAuthenticatedNav = () => (
   <>
-    <StyledLink to="/">Home</StyledLink>
-
     <StyledLink to="register">Register</StyledLink>
 
     <StyledLink to="login">Login</StyledLink>
@@ -71,6 +67,7 @@ export const Layout = () => {
       {isLoadingAuth && <Loader />}
       <StyledLayout>
         <nav>
+          <StyledLink to="/goit-react-hw-08-phonebook">Home</StyledLink>
           {isLoggedIn ? <AuthenticatedNav /> : <UnAuthenticatedNav />}
           <ThemeToggler />
         </nav>
