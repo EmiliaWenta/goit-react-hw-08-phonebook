@@ -1,22 +1,20 @@
 import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Heading,
-  Text,
-  Image,
-  Stack,
-  Button,
-  SimpleGrid,
-} from '@chakra-ui/react';
-import {
   CheckIcon,
   EditIcon,
   SearchIcon,
   DeleteIcon,
   PhoneIcon,
 } from '@chakra-ui/icons';
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Heading,
+  Text,
+  Stack,
+  SimpleGrid,
+} from '@chakra-ui/react';
 
 export default function Home() {
   return (
@@ -45,7 +43,9 @@ export default function Home() {
       </Card>
       <SimpleGrid
         spacing={4}
-        templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
+        paddingTop="15px"
+        justify="center"
+        templateColumns="repeat(auto-fill, minmax(400px, 1fr))"
       >
         <Card>
           <CardHeader>
@@ -57,7 +57,7 @@ export default function Home() {
               experience.
             </Text>
           </CardBody>
-          <CardFooter>
+          <CardFooter justifyContent="center">
             <EditIcon />
           </CardFooter>
         </Card>
@@ -71,7 +71,7 @@ export default function Home() {
               more scrolling endlessly.
             </Text>
           </CardBody>
-          <CardFooter>
+          <CardFooter justifyContent="center">
             <SearchIcon />
           </CardFooter>
         </Card>
@@ -85,7 +85,7 @@ export default function Home() {
               to remove unwanted entries. Just a one taps, and you're done!
             </Text>
           </CardBody>
-          <CardFooter>
+          <CardFooter justifyContent="center">
             <DeleteIcon />
           </CardFooter>
         </Card>
@@ -96,11 +96,11 @@ export default function Home() {
           <CardBody>
             <Text>
               Whether you're at work, home, or on the go, ConnectSave is at your
-              fingertips. Access your contacts anytime, anywhere – our app is
+              fingertips. Access your contacts anytime, anywhere our app is
               designed to keep you connected on your terms.
             </Text>
           </CardBody>
-          <CardFooter>
+          <CardFooter justifyContent="center">
             <PhoneIcon />
           </CardFooter>
         </Card>

@@ -1,10 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Box, Flex, Heading, Input } from '@chakra-ui/react';
 
 import { filterContact } from '../../redux/reducers/contacts/filterSlice';
-
-import { Box, Flex, Heading, Input } from '@chakra-ui/react';
-import css from './Filter.module.css';
 
 export default function Filter() {
   const dispatch = useDispatch();

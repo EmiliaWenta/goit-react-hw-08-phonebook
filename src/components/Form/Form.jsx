@@ -1,15 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-
-import { addContact } from '../../redux/reducers/contacts/operations';
-
-import { Heading } from '@chakra-ui/react';
-import { Card, CardBody } from '@chakra-ui/react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
-import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { ArrowForwardIcon, PhoneIcon } from '@chakra-ui/icons';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 import {
+  Heading,
   Flex,
   Box,
   Stack,
@@ -19,14 +14,16 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  useColorMode,
+  Card,
+  CardBody,
 } from '@chakra-ui/react';
-import { selectAuth } from '../../redux/selectors';
+
+import { selectContacts } from '../../redux/selectors';
+import { addContact } from '../../redux/reducers/contacts/operations';
 
 export default function Form() {
   const dispatch = useDispatch();
-  // const { error } = useSelector(selectAuth);
-  // console.log(error);
+  const { error } = useSelector(selectContacts);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -37,9 +34,9 @@ export default function Form() {
     form.reset();
   };
 
-  // if (error) {
-  //   return Notify.failure(error);
-  // }
+  if (error) {
+    return Notify.failure(error);
+  }
 
   return (
     <Box>

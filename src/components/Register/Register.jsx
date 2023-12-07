@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
-import { register } from '../../redux/reducers/auth/operations';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { selectAuth } from '../../redux/selectors';
+import { ArrowForwardIcon, AtSignIcon, LockIcon } from '@chakra-ui/icons';
 import {
   Flex,
   Box,
@@ -16,9 +16,9 @@ import {
   InputLeftElement,
   useColorMode,
 } from '@chakra-ui/react';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-import { ArrowForwardIcon, AtSignIcon, LockIcon } from '@chakra-ui/icons';
+import { selectAuth } from '../../redux/selectors';
+import { register } from '../../redux/reducers/auth/operations';
 
 export default function Register() {
   const { colorMode } = useColorMode();

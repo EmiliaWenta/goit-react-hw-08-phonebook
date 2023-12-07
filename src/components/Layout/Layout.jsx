@@ -1,21 +1,17 @@
-import React from 'react';
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
-import Loader from '../Loader/Loader';
-
-import { useAuth } from 'hook/useAuth';
-import { logout } from '../../redux/reducers/auth/operations';
+import React, { Suspense } from 'react';
 import { useDispatch } from 'react-redux';
-
-import ThemeToggler from '../ThemeToggler';
-import { selectLoaderAuth } from 'redux/selectors';
-
+import { Outlet } from 'react-router-dom';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { Button, Tag, TagLabel, Avatar } from '@chakra-ui/react';
 
-import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { selectUser } from '../../redux/selectors';
+import Loader from '../Loader/Loader';
+import { useAuth } from 'hook/useAuth';
+import ThemeToggler from '../ThemeToggler';
+import { logout } from '../../redux/reducers/auth/operations';
+import { selectUser, selectLoaderAuth } from '../../redux/selectors';
+
 import { StyledLayout, StyledLink } from './Layout.styled';
-import { ArrowForwardIcon } from '@chakra-ui/icons';
 
 const AuthenticatedNav = () => {
   const user = useSelector(selectUser);

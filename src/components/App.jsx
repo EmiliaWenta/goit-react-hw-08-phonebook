@@ -1,19 +1,18 @@
+import { StyledContainer } from './App.styled';
+
 import { useDispatch } from 'react-redux';
 import React, { lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 import { Layout } from './Layout/Layout';
+import Loader from '../components/Loader/Loader';
+import { selectLoaderAuth } from 'redux/selectors';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import { currentUser } from '../redux/reducers/auth/operations';
 
-import { StyledContainer } from './App.styled';
-
-import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { selectLoaderAuth } from 'redux/selectors';
-import Loader from '../components/Loader/Loader';
-
-const Home = lazy(() => import('../Pages/Home'));
+const Home = lazy(() => import('../components/Home/Home'));
 const Register = lazy(() => import('../components/Register/Register'));
 const Login = lazy(() => import('../components/Login/Login'));
 const Contacts = lazy(() => import('../components/Contacts/Contacts'));

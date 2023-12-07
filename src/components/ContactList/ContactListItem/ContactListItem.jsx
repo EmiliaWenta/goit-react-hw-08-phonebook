@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-
-import { deleteContact } from '../../../redux/reducers/contacts/operations';
-
+import { PhoneIcon, DeleteIcon } from '@chakra-ui/icons';
 import {
   Flex,
   ListItem,
@@ -12,7 +10,8 @@ import {
   Card,
   CardBody,
 } from '@chakra-ui/react';
-import { PhoneIcon, DeleteIcon } from '@chakra-ui/icons';
+
+import { deleteContact } from '../../../redux/reducers/contacts/operations';
 
 export default function ContactListItem({ id, name, number }) {
   const dispatch = useDispatch();
